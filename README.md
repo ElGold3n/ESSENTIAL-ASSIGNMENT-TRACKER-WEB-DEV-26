@@ -1,4 +1,4 @@
-About This Essential Assignment Tracker
+                                      About This Essential Assignment Tracker
 
 
 This is a simple, personal Essential Assignment Tracker I built to help you stay organized during your university studies.
