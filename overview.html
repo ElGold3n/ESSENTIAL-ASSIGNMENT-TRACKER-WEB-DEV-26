@@ -4,192 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>🎓 Essential Assignment Tracker Overview</title>
-    <style>
-                  .dark-mode .timetable {
-                    background: #161b22 !important;
-                    color: #e0e0e0 !important;
-                  }
-                  .dark-mode .timetable th, .dark-mode .timetable td {
-                    border: 1px solid #333 !important;
-                  }
-                  .dark-mode .timetable th {
-                    background: #2d1846 !important;
-                    color: #b411cf !important;
-                  }
-                  .dark-mode .assignment-block {
-                    background: #23263a !important;
-                    color: #e0e0e0 !important;
-                  }
-            /*
-             * Dark mode override for manual toggle
-             *
-             * This section changes the colors and backgrounds of the page when dark mode is turned on.
-             * When the user clicks the dark mode button, these styles are applied to make the page easier on the eyes at night or in low light.
-             * It overrides the normal (light) colors with darker ones for better visibility and comfort.
-             */
-            .dark-mode body {
-              /* background removed, handled by .dark-mode .container */
-              color: #e0e0e0;
-              transition: color 1s;
-            }
-            .dark-mode .header {
-              background: linear-gradient(90deg, #0d1117 0%, #2d1846 50%, #0d1117 100%);
-              color: #fff;
-            }
-            .dark-mode .card {
-              background: #161b22 !important;
-              color: #e0e0e0 !important;
-            }
-            .dark-mode .nav a {
-              color: #fff;
-            }
-            .dark-mode .nav a:hover {
-              color: #58a6ff;
-            }
-      :root {
-        --bg: #f8fafc;
-        --text: #1e293b;
-        --card: #ffffff;
-        --border: #e2e8f0;
-        --primary: #6366f1; /* indigo accent */
-        --web-technologies-part-1: #3b82f6;    /* blue */
-        --artificial-intelligence: #10b981;     /* emerald */
-        --database-systems: #ec4899;     /* pink */
-        --devops-global-online: #f59e0b;    /* amber */
-        --high: #c2b280;    /* light brown for due soon */
-        --med: #f59e0b;     /* amber */
-        --low: #4caf50;     /* darker green */
-        --overdue: #dc2626;
-      }
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        color: #333;
-        transition: color 1s;
-      }
-      .header {
-        background: #270f2b;
-        color: white;
-        padding: 15px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .header h1 {
-        margin: 0;
-        font-size: 1.5rem;
-      }
-      .nav a {
-        color: white;
-        margin-left: 20px;
-        text-decoration: none;
-        font-weight: bold;
-      }
-      .nav a:hover { color: #a5d8ff; }
-      .container {
-        max-width: 1400px;
-        margin: 0 auto;
-        background: #f8f9fa;
-        color: #333;
-        transition: background 3s cubic-bezier(0.4,0,0.2,1), color 1s cubic-bezier(0.4,0,0.2,1);
-      }
-
-    .card {
-      background: rgba(255,255,255,0.75);
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-      border: 1px solid var(--border);
-      transition: background 2s cubic-bezier(0.4,0,0.2,1);
-    }
-    .card h3 { margin: 0 0 1rem; font-size: 1.1rem; }
-    .progress-ring {
-      width: 80px; height: 80px; border-radius: 50%;
-      background: conic-gradient(var(--primary) 0% 78%, #e2e8f0 78% 100%);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: bold; color: var(--primary); margin: 0 auto;
-    }
-    .progress-bar {
-      height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%; background: var(--primary); width: 0%; transition: width 0.5s;
-    }
     
-    /*
-     * Timetable / Calendar View
-     *
-     * This section styles the weekly timetable (calendar) that shows assignments for each weekday.
-     
-     * Assignments are displayed in a grid, with each column representing a day (Monday to Friday).
+    <link rel="stylesheet" href="css/overview.css">
 
-     * This helps students quickly see which assignments are due on which days, making it easier to plan their week.
-     */
-
-    .timetable {
-      background: transparent;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-    }
-    .timetable table {
-      width: 100%; border-collapse: collapse;
-    }
-    .timetable th, .timetable td {
-      padding: 12px; text-align: center; border: 1px solid var(--border);
-    }
-    .timetable th { background: var(--primary); color: rgb(15, 15, 15); }
-    .day-cell {
-      min-height: 80px; position: relative;
-    }
-    .assignment-block {
-      padding: 6px 8px; margin: 4px auto; border-radius: 6px;
-      font-size: 0.9rem; color: rgb(0, 0, 0); max-width: 90%;
-    }
-    
-    /*
-     * Assignment List with Priority Flags
-     *
-     * This section styles the list of assignments shown on the page.
-
-     * Each assignment is displayed as a card with a colored border and a label.
-
-     * that shows its priority or status (like Overdue, Due soon, Active, or Completed).
-     
-     * The colors and styles help students quickly see which assignments need attention.
-     */
-
-    .assignments {
-      display: grid; gap: 4rem;
-    }
-    .assignment-card {
-      background: var(--card);
-      border-radius: 10px;
-      padding: 1.2rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      border-left: 5px solid var(--web-technologies-part-1); /* default */
-      display: flex; flex-direction: column; gap: 0.5rem;
-    }
-    .assignment-card.web-technologies-part-1 { border-left-color: var(--web-technologies-part-1); }
-    .assignment-card.artificial-intelligence { border-left-color: var(--artificial-intelligence);  }
-    .assignment-card.database-systems  { border-left-color: var(--database-systems);  }
-    .assignment-card.devops-global-online { border-left-color: var(--devops-global-online); }
-    .priority {
-      font-size: 0.85rem; padding: 4px 10px; border-radius: 20px;
-      color: rgb(10, 10, 10); align-self: flex-start;
-    }
-    .high { background: var(--high); color: #000; }
-    .med  { background: var(--med);  }
-    .low  { background: var(--low);  }
-    .overdue { background: var(--overdue); font-weight: bold; }
-    
-    @media (max-width: 768px) {
-      .dashboard { grid-template-columns: 1fr; }
-      .timetable th, .timetable td { font-size: 0.9rem; padding: 8px; }
-    }
-  </style>
+    <!-- All main styles can be found in css/overview.css -->
 </head>
 <body>
   <div class="container">
@@ -197,7 +15,9 @@
       <h1>🎓 Essential Assignment Tracker Overview
         <button id="darkModeToggle" aria-label="Toggle dark mode" style="background:none;border:none;cursor:pointer;margin-left:12px;vertical-align:middle;outline:none;position:relative;">
           <span id="darkModeIcon" style="display:inline-block;width:32px;height:32px;vertical-align:middle;">
+
             <!--Sun SVG for light mode -->
+
             <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32" style="display:block;">
               <circle cx="24" cy="24" r="10" fill="#ffe066" stroke="#f9c846" stroke-width="2"/>
               <g stroke="#f9c846" stroke-width="2">
@@ -211,7 +31,9 @@
                 <line x1="31.03" y1="16.97" x2="37.07" y2="10.93"/>
               </g>
             </svg>
+
             <!--Moon SVG for dark mode -->
+
             <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32" style="display:none;">
               <path d="M34 24c0 7-5.5 12-12 12-2.5 0-4.8-0.7-6.7-2 6.2-1.1 10.7-6.2 10.7-12.1 0-3.2-1.2-6.1-3.2-8.3C25.2 13.2 34 15.7 34 24z" fill="#b411cf" stroke="#fff" stroke-width="2"/>
               <circle cx="30" cy="20" r="2" fill="#fff" opacity="0.7"/>
@@ -221,7 +43,9 @@
           <span style="position:absolute;top:40px;left:0;width:180px;background:#23263a;color:#e0e0e0;font-size:0.92rem;padding:6px 12px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.12);display:none;z-index:100;" id="darkModeHint">Toggle dark mode for easier viewing</span>
         </button>
         <script>
+
           // Show hint on hover
+
           const darkModeToggleBtn = document.getElementById('darkModeToggle');
           const darkModeHint = document.getElementById('darkModeHint');
           darkModeToggleBtn.addEventListener('mouseenter',()=>{darkModeHint.style.display='block';});
@@ -238,6 +62,7 @@
     <div class="container">
 
     <!-- Dashboard Overview Cards
+
          Shows semester progress, upcoming assignments, overdue count, and today's workload -->
     
     <div class="dashboard">
@@ -288,6 +113,7 @@
 
     <!--Visual Timetable (Weekly Calendar) -->
 
+
     <!--Displays assignments for each weekday in a calendar format -->
 
     <div class="timetable">
@@ -332,20 +158,20 @@
           const todaysAssignments = assignments.filter(a => {
             if (a.status === 'Completed') return false;
 
-            // Try to convert the assignment's due date into a format that JavaScript can understand.
+            // converts the assignment's due date into a format that JavaScript can understand.
 
-            // This is important as dates can be written in different ways (like 25/02/2026 or 2026-02-25),
+            // This is important as dates can be written in different ways (such as 25/02/2026 or 2026-02-25),
             
-            // and we need to make sure we can compare them correctly to today's date.
+            // and i need to make sure i can compare them correctly to today's date.
             
             let adate = a.due;
             if (!adate) return false;
 
-            // Change the date format to YYYY-MM-DD (for example, 2026-02-25).
+            // Changes the date format to YYYY-MM-DD (for example, 2026-02-25).
 
             // This format is the standard way JavaScript understands dates,
 
-            // so we convert dates like 25/02/2026 to 2026-02-25 to make sure
+            // so dates convert like 25/02/2026 to 2026-02-25 to make sure
 
             // our code can compare dates correctly.
             
@@ -355,15 +181,13 @@
             } else if (/^\d{2}\/\d{2}\/\d{4}$/.test(adate)) {
 
               // If the date is in DD/MM/YYYY format (like 25/02/2026),
-              
+
               // rearrange it to YYYY-MM-DD (like 2026-02-25) so JavaScript can understand it.
+
               const [d, m, y] = adate.split('/');
               parsed = `${y}-${m}-${d}`;
             } else {
-
               // If the date format is not recognized above, try to let JavaScript parse it automatically.
-              
-              // This is a fallback for unusual or unexpected date formats.
 
               const d = new Date(adate);
               if (!isNaN(d)) {
