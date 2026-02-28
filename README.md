@@ -5,13 +5,13 @@ This is a simple, personal Essential Assignment Tracker I built to help you stay
 
                                                   What it does
 
-Shows upcoming Assignments and deadlines on the Home page
+Shows upcoming Assignments and deadlines on the Home and overview pages
 
 Lets you quickly add new Assignments with a name, due date, priority level, and optional notes.
 
 Uses colored badges to highlight what’s urgent (Due Soon / Overdue)
 
-Keeps everything lightweight — no login, no ads, just your clear-cut Assignments.
+Keeps everything lightweight — no login, just your simple Assignment overviews.
 
 
                                                     Main goal
