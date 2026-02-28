@@ -1,9 +1,3 @@
-<!--
-    CSS for the Add Assignment page is in: css/add-Assignment.css
-    
-    (See the <link rel="stylesheet" href="css/add-Assignment.css"> in the <head> section.)
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -321,7 +315,23 @@ if (editIdx !== null) {
 
 document.getElementById('assignmentForm').addEventListener('submit', function(e) {
 
-    e.preventDefault(); // Stop the page from reloading when the form is submitted, so we can handle the data with JavaScript instead.
+    e.preventDefault(); // Stop the page from reloading when the form is submitted, so the data is handledwith JavaScript.
+
+        // Show confirmation popup before saving or updating
+
+        // This uses the browser's default confirm dialog to prompt the user
+
+        // If editing, the message asks to confirm updating; otherwise, it asks to confirm adding
+
+        // If the user clicks Cancel, the assignment is NOT saved
+
+        const confirmMsg = editIdx !== null
+            ? 'Are you sure you want to update this assignment?\n\nPlease review your changes before saving.'
+            : 'Are you sure you want to add this assignment?\n\nPlease review your details before saving.';
+        if (!window.confirm(confirmMsg)) {
+                // User cancelled, do not proceed with saving
+                return;
+        }
 
     const form = e.target;
 
@@ -338,13 +348,14 @@ document.getElementById('assignmentForm').addEventListener('submit', function(e)
         assignments = JSON.parse(localStorage.getItem('assignments')) || [];
     } catch {}
     if (editIdx !== null && assignments[parseInt(editIdx)]) {
-
+        
         // Update existing assignment
-
+        
         assignments[parseInt(editIdx)] = { name, module, due: displayDue, status, notes };
+
     } else {
         // Add new assignment
-        
+
         assignments.push({ name, module, due: displayDue, status, notes });
     }
     // Save assignments to localStorage as a JSON string. This allows the data to persist in the browser so that when the user returns to the site, their assignments will still be there.
@@ -352,15 +363,12 @@ document.getElementById('assignmentForm').addEventListener('submit', function(e)
     localStorage.setItem('assignments', JSON.stringify(assignments));
 
     // Set a flag in sessionStorage to show a notification on the homepage after redirecting back. This lets the homepage know whether to show a "saved" or "updated" message to the user, providing feedback that their action was successful.
-
     if (editIdx !== null) {
         sessionStorage.setItem('assignmentStatus', 'updated');
     } else {
         sessionStorage.setItem('assignmentStatus', 'saved');
     }
-
     // Redirect to home page after saving or updating the assignment, and show a notification there confirming the action. The notification will say "Assignment saved!" or "Assignment updated!" depending on whether it was a new assignment or an edit.
-
     setTimeout(function() {
         window.location.href = 'index.html';
     }, 600);
