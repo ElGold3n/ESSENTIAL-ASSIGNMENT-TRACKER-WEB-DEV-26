@@ -108,9 +108,15 @@ body {
 .back-btn:hover { color: #a5d8ff; }
 
 /* Navigation links (top right) */
+.nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-left: auto;
+}
+
 .nav a {
     color: white;
-    margin-left: 20px;
     text-decoration: none;
     font-weight: bold;
 }
