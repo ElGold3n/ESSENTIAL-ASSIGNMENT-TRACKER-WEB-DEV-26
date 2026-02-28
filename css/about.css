@@ -92,6 +92,8 @@ body {
     justify-content: center;
     white-space: nowrap;
 }
+
+/* Back button (top left) */
 .back-btn {
     color: #f3f8f2;
     font-size: 1.3rem;
